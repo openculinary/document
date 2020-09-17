@@ -1,7 +1,7 @@
 .PHONY: tests
 
 lint:
-	npx eslint src
+	npx tslint 'src/**/*.ts'
 
 tests:
 	npx mocha
