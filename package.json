@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "document",
   "type": "module",
+  "main": "src/document.js",
   "devDependencies": {
     "eslint": "^7.9.0",
     "mocha": "^8.1.3"
