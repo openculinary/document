@@ -12,7 +12,7 @@ export function parseMeal(line: string): Meal {
     return {
         recipe_id: groups[2],
         datetime: groups[3],
-        servings: parseInt(groups[1]),
+        servings: parseInt(groups[1], 10),
     };
 };
 
