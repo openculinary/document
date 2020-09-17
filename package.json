@@ -1,0 +1,9 @@
+{
+  "name": "document",
+  "version": "1.0.0",
+  "description": "document",
+  "type": "module",
+  "devDependencies": {
+    "mocha": "^8.1.3"
+  }
+}
