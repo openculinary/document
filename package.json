@@ -4,6 +4,7 @@
   "description": "document",
   "type": "module",
   "devDependencies": {
+    "eslint": "^7.9.0",
     "mocha": "^8.1.3"
   }
 }
