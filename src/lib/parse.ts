@@ -1,6 +1,7 @@
 import { SemVer } from 'semver';
 
 import { Starred, Meal, Stock } from '../document';
+import { packageVersion } from '../version';
 
 export function parseStarred(line: string, source: SemVer): Starred {
     const groups = line.match(/(\S+)/);
