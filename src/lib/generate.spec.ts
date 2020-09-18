@@ -10,7 +10,7 @@ describe('generation', () => {
     const starred: Starred = {
         recipe_id: 'test-recipe-id',
     };
-    const text = generateStarred(starred);
+    const text = generateStarred(starred, null);
 
     assert.equal(text, 'test-recipe-id');
   });
@@ -21,7 +21,7 @@ describe('generation', () => {
         datetime: '2020-09-17',
         servings: 2,
     };
-    const text = generateMeal(meal);
+    const text = generateMeal(meal, null);
 
     assert.equal(text, '2x example-id @ 2020-09-17');
   });
@@ -32,7 +32,7 @@ describe('generation', () => {
         magnitude: null,
         units: null,
     };
-    const text = generateStock(stock);
+    const text = generateStock(stock, null);
 
     assert.equal('test-product-id', text);
   });

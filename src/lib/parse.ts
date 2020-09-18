@@ -1,13 +1,15 @@
+import { SemVer } from 'semver';
+
 import { Starred, Meal, Stock } from '../document';
 
-export function parseStarred(line: string): Starred {
+export function parseStarred(line: string, source: SemVer): Starred {
     const groups = line.match(/(\S+)/);
     return {
         recipe_id: groups[1],
     };
 };
 
-export function parseMeal(line: string): Meal {
+export function parseMeal(line: string, source: SemVer): Meal {
     const groups = line.match(/(\d+)x\s+(\S+)\s+@\s+(\S+)/);
     return {
         recipe_id: groups[2],
@@ -16,7 +18,7 @@ export function parseMeal(line: string): Meal {
     };
 };
 
-export function parseStock(line: string): Stock {
+export function parseStock(line: string, source: SemVer): Stock {
     const groups = line.match(/(\S+)/);
     return {
         product_id: groups[1],
