@@ -4,4 +4,4 @@ lint:
 	npx tslint 'src/**/*.ts'
 
 tests:
-	npx mocha
+	TS_NODE_IGNORE='node_modules/(?!document-prev)' npx mocha

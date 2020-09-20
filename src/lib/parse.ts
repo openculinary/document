@@ -1,9 +1,16 @@
-import { SemVer } from 'semver';
+import { lt, SemVer } from 'semver';
+
+import * as prevDocument from 'document-prev';
 
 import { Starred, Meal, Stock } from '../types';
 import { packageVersion } from '../version';
+import { generateStarred, generateMeal, generateStock } from './generate';
 
 export function parseStarred(line: string, source: SemVer): Starred {
+    if (lt(source, packageVersion)) {
+        const prevStarred: Starred = prevDocument.parse.parseStarred(line, source);
+        line = generateStarred(prevStarred, packageVersion);
+    }
     const groups = line.match(/(\S+)/);
     return {
         recipe_id: groups[1],
