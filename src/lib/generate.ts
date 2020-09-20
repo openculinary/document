@@ -1,6 +1,6 @@
 import { SemVer } from 'semver';
 
-import { Starred, Meal, Stock } from '../document';
+import { Starred, Meal, Stock } from '../types';
 
 export function generateStarred(starred: Starred, target: SemVer): string {
     return `${starred.recipe_id}`;

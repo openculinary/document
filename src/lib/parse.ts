@@ -1,6 +1,6 @@
 import { SemVer } from 'semver';
 
-import { Starred, Meal, Stock } from '../document';
+import { Starred, Meal, Stock } from '../types';
 import { packageVersion } from '../version';
 
 export function parseStarred(line: string, source: SemVer): Starred {

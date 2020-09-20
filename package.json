@@ -4,7 +4,7 @@
   "version": "2020.9.17",
   "description": "document",
   "type": "module",
-  "main": "src/document.ts",
+  "main": "src/index.ts",
   "devDependencies": {
     "@types/mocha": "^8.0.3",
     "assert": "^2.0.0",

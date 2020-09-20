@@ -1,7 +1,6 @@
 import * as assert from 'assert';
 
-import { Starred, Meal, Stock } from '../document';
-
+import { Starred, Meal, Stock } from '../types';
 import { parseStarred, parseMeal, parseStock } from './parse';
 
 describe('parsing', () => {
