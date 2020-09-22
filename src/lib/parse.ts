@@ -8,8 +8,8 @@ import { generateStarred, generateMeal, generateStock } from './generate';
 
 export function parseStarred(line: string, source: SemVer): Starred {
     if (lt(source, packageVersion)) {
-        const prevStarred: Starred = prevDocument.parse.parseStarred(line, source);
-        line = generateStarred(prevStarred, packageVersion);
+        const prevStarred: prevDocument.types.Starred = prevDocument.parse.parseStarred(line, source);
+        line = prevDocument.generate.generateStarred(prevStarred, packageVersion);
     }
     const groups = line.match(/(\S+)/);
     return {
