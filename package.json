@@ -1,7 +1,7 @@
 {
   "_WARNING": "This package.json file is embedded in-full in dependent software",
   "name": "document",
-  "version": "2020.9.17",
+  "version": "2020.9.22",
   "description": "document",
   "type": "module",
   "main": "src/index.ts",
