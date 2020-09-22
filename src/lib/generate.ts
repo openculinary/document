@@ -1,4 +1,4 @@
-import { SemVer } from 'semver';
+import { gt, SemVer } from 'semver';
 
 import { Starred, Meal, Stock } from '../types';
 

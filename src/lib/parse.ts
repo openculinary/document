@@ -1,15 +1,15 @@
 import { lt, SemVer } from 'semver';
 
 import * as prev from 'document-prev';
+import * as curr from '../types';
 
-import { Starred, Meal, Stock } from '../types';
 import { packageVersion } from '../version';
 import { generateStarred, generateMeal, generateStock } from './generate';
 
-export function parseStarred(line: string, source: SemVer): Starred {
+export function parseStarred(line: string, source: SemVer): curr.Starred {
     if (lt(source, packageVersion)) {
         const prevStarred: prev.types.Starred = prev.parse.parseStarred(line, source);
-        line = prev.generate.generateStarred(prevStarred, packageVersion);
+        return curr.upgradeStarred(prevStarred);
     }
     const groups = line.match(/(\S+)/);
     return {
@@ -17,7 +17,7 @@ export function parseStarred(line: string, source: SemVer): Starred {
     };
 };
 
-export function parseMeal(line: string, source: SemVer): Meal {
+export function parseMeal(line: string, source: SemVer): curr.Meal {
     const groups = line.match(/(\d+)x\s+(\S+)\s+@\s+(\S+)/);
     return {
         recipe_id: groups[2],
@@ -26,7 +26,7 @@ export function parseMeal(line: string, source: SemVer): Meal {
     };
 };
 
-export function parseStock(line: string, source: SemVer): Stock {
+export function parseStock(line: string, source: SemVer): curr.Stock {
     const groups = line.match(/(\S+)/);
     return {
         product_id: groups[1],

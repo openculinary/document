@@ -1,3 +1,5 @@
+import * as prev from 'document-prev';
+
 export interface Quantity {
     magnitude: number,
     units: string,
@@ -37,6 +39,10 @@ export interface Recipe {
 
 export interface Starred {
     recipe_id: string,
+}
+
+export function upgradeStarred(prevStarred: prev.types.Starred): Starred {
+    return prevStarred;
 }
 
 export interface Meal {
