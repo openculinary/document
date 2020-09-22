@@ -1,12 +1,12 @@
 import * as assert from 'assert';
 
-import { Starred, Meal, Stock } from '../types';
+import * as curr from '../types';
 import { generateStarred, generateMeal, generateStock } from './generate';
 
 describe('generation', () => {
 
   it('starred entity to line', () => {
-    const starred: Starred = {
+    const starred: curr.Starred = {
         recipe_id: 'test-recipe-id',
     };
     const text = generateStarred(starred, null);
@@ -15,7 +15,7 @@ describe('generation', () => {
   });
 
   it('meal entity to line', () => {
-    const meal: Meal = {
+    const meal: curr.Meal = {
         recipe_id: 'example-id',
         datetime: '2020-09-17',
         servings: 2,
@@ -26,7 +26,7 @@ describe('generation', () => {
   });
 
   it('stock entity to line', () => {
-    const stock: Stock = {
+    const stock: curr.Stock = {
         product_id: 'test-product-id',
         magnitude: null,
         units: null,
