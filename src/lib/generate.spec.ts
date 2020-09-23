@@ -1,8 +1,8 @@
 import * as assert from 'assert';
 
 import * as curr from '../types';
-import { generateStarred, generateMeal, generateStock } from './generate';
 
+import { generateStarred, generateMeal, generateStock } from './generate';
 import { packageVersion } from '../version';
 
 describe('generation', () => {

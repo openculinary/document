@@ -1,5 +1,4 @@
 import * as assert from 'assert';
-
 import { parse as parseSemVer } from 'semver';
 
 import { packageVersion, types, parse, generate } from './index';
