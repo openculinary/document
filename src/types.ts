@@ -1,4 +1,5 @@
 import * as prev from 'document-prev';
+import * as semver from 'semver';
 
 export interface Quantity {
     magnitude: number,
@@ -39,10 +40,6 @@ export interface Recipe {
 
 export interface Starred {
     recipe_id: string,
-}
-
-export function upgradeStarred(prevStarred: prev.types.Starred): Starred {
-    return prevStarred;
 }
 
 export interface Meal {
