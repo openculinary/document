@@ -34,7 +34,7 @@ describe('parsing', () => {
 
   it('starred description line', () => {
     const text = 'test-recipe-id';
-    const version = semver.parse('1.0.0');
+    const version = semver.parse('2020.9.23');
     const starred = new impl.Starred(text, version);
 
     assert.equal(starred.recipe_id, 'test-recipe-id');
@@ -42,7 +42,7 @@ describe('parsing', () => {
 
   it('meal description line', () => {
     const text = '2x example-id @ 2020-09-17';
-    const version = semver.parse('1.0.0');
+    const version = semver.parse('2020.9.23');
     const meal = new impl.Meal(text, version);
 
     assert.equal(meal.recipe_id, 'example-id');
@@ -50,7 +50,7 @@ describe('parsing', () => {
 
   it('stock description line', () => {
     const text = 'test-product-id';
-    const version = semver.parse('1.0.0');
+    const version = semver.parse('2020.9.23');
     const stock = new impl.Stock(text, version);
 
     assert.equal(stock.product_id, 'test-product-id');
