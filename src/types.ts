@@ -44,7 +44,7 @@ export abstract class Entity {
 
     constructor(line: string, source: semver.SemVer) {
         if (semver.lt(source, packageVersion)) {
-            const prevEntity = new prev.impl[this.constructor.name](line, source);
+            const prevEntity = new prev.types[this.constructor.name](line, source);
             const upgraded = this.upgrade(prevEntity);
             line = upgraded.emit(packageVersion);
         }
@@ -54,7 +54,7 @@ export abstract class Entity {
     emit(target: semver.SemVer): string {
         const line = this.emitImpl();
         if (semver.lt(target, packageVersion)) {
-            const prevEntity = new prev.impl[this.constructor.name]();
+            const prevEntity = new prev.types[this.constructor.name]();
             const prevImpl = prevEntity.parse(line, prev.packageVersion);
             return prevImpl.emit(target);
         }
@@ -63,7 +63,7 @@ export abstract class Entity {
 
     abstract parseImpl(line: string): void;
     abstract emitImpl(): string;
-    abstract upgrade(legacy: prev.impl.Entity);
+    abstract upgrade(legacy: prev.types.Entity);
 }
 
 /* tslint:disable:variable-name */
@@ -77,7 +77,7 @@ export class Starred extends Entity {
     emitImpl(): string {
         return `${this.recipe_id}`;
     }
-    upgrade(legacy: prev.impl.Starred): Starred {
+    upgrade(legacy: prev.types.Starred): Starred {
         const line = legacy.emit(prev.packageVersion);
         return new Starred(line, packageVersion);
     }
@@ -98,7 +98,7 @@ export class Meal extends Entity {
     emitImpl(): string {
         return `${this.servings || 1}x ${this.recipe_id} @ ${this.datetime}`;
     }
-    upgrade(legacy: prev.impl.Meal): Meal {
+    upgrade(legacy: prev.types.Meal): Meal {
         const line = legacy.emit(prev.packageVersion);
         return new Meal(line, packageVersion);
     }
@@ -116,7 +116,7 @@ export class Stock extends Entity {
     emitImpl(): string {
         return `${this.product_id}`;
     }
-    upgrade(legacy: prev.impl.Stock): Stock {
+    upgrade(legacy: prev.types.Stock): Stock {
         const line = legacy.emit(prev.packageVersion);
         return new Stock(line, packageVersion);
     }
