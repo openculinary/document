@@ -27,7 +27,7 @@ export abstract class Entity {
 
     abstract parseImpl(line: string): void;
     abstract emitImpl(): string;
-    abstract upgrade(legacy: Entity);
+    abstract upgrade(legacy: prev.impl.Entity);
 }
 
 /* tslint:disable:variable-name */
