@@ -4,7 +4,7 @@ import * as prev from 'document-prev';
 
 import { packageVersion } from './version';
 
-abstract class Entity {
+export abstract class Entity {
 
     constructor(line: string, source: semver.SemVer) {
         if (semver.lt(source, packageVersion)) {
