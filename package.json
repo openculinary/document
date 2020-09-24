@@ -15,7 +15,7 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "document-prev": "git+https://github.com/openculinary/document.git#3a95170565837719dfe1b33dfcdb6a6e2838de14",
+    "document-prev": "git+https://github.com/openculinary/document.git#9739f4fce4144dd3c174ab65e34f17f42f908d4c",
     "@types/node": "^14.11.1",
     "@types/semver": "^7.3.4"
   }
