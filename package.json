@@ -3,6 +3,7 @@
   "name": "document",
   "version": "2020.9.23",
   "description": "document",
+  "license": "AGPL-3.0-or-later",
   "type": "module",
   "main": "src/index.ts",
   "devDependencies": {
