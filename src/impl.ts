@@ -30,6 +30,7 @@ abstract class Entity {
     abstract upgrade(legacy: Entity);
 }
 
+/* tslint:disable:variable-name */
 export class Starred extends Entity {
     recipe_id: string;
 
