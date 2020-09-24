@@ -41,7 +41,7 @@ export class Starred extends Entity {
         return `${this.recipe_id}`;
     }
     upgrade(legacy: prev.impl.Starred): Starred {
-        const line = legacy.emit(legacy.packageVersion);
+        const line = legacy.emit(prev.packageVersion);
         return new Starred(line, packageVersion);
     }
 }
@@ -62,7 +62,7 @@ export class Meal extends Entity {
         return `${this.servings || 1}x ${this.recipe_id} @ ${this.datetime}`;
     }
     upgrade(legacy: prev.impl.Meal): Meal {
-        const line = legacy.emit(legacy.packageVersion);
+        const line = legacy.emit(prev.packageVersion);
         return new Meal(line, packageVersion);
     }
 }
@@ -80,7 +80,7 @@ export class Stock extends Entity {
         return `${this.product_id}`;
     }
     upgrade(legacy: prev.impl.Stock): Stock {
-        const line = legacy.emit(legacy.packageVersion);
+        const line = legacy.emit(prev.packageVersion);
         return new Stock(line, packageVersion);
     }
 }
