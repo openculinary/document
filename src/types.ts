@@ -44,7 +44,7 @@ export abstract class Entity {
 
     constructor(line: string, source: semver.SemVer) {
         if (semver.lt(source, packageVersion)) {
-            const prevEntity = new prev.types[this.constructor.name](line, source);
+            const prevEntity = new prev.types[this.name()](line, source);
             const upgraded = this.upgrade(prevEntity);
             line = upgraded.emit(packageVersion);
         }
@@ -54,13 +54,14 @@ export abstract class Entity {
     emit(target: semver.SemVer): string {
         const line = this.emitImpl();
         if (semver.lt(target, packageVersion)) {
-            const prevEntity = new prev.types[this.constructor.name]();
+            const prevEntity = new prev.types[this.name()]();
             const prevImpl = prevEntity.parse(line, prev.packageVersion);
             return prevImpl.emit(target);
         }
         return line;
     };
 
+    abstract name(): string; // TODO:
     abstract parseImpl(line: string): void;
     abstract emitImpl(): string;
     abstract upgrade(legacy: prev.types.Entity);
@@ -70,6 +71,7 @@ export abstract class Entity {
 export class Starred extends Entity {
     recipe_id: string;
 
+    name(): string { return 'Starred'; }
     parseImpl(line: string): void {
         const groups = line.match(/(\S+)/);
         this.recipe_id = groups[1];
@@ -89,6 +91,7 @@ export class Meal extends Entity {
     datetime: string;
     servings: number;
 
+    name(): string { return 'Meal'; }
     parseImpl(line: string): void {
         const groups = line.match(/(\d+)x\s+(\S+)\s+@\s+(\S+)/);
         this.recipe_id = groups[2];
@@ -109,6 +112,7 @@ export class Stock extends Entity {
     magnitude: number;
     units: string;
 
+    name(): string { return 'Stock'; }
     parseImpl(line: string): void {
         const groups = line.match(/(\S+)/);
         this.product_id = groups[1];
