@@ -1,6 +1,5 @@
 import { parse } from 'semver';
 
-// tslint:disable-next-line:no-var-requires
-const version = require('../package.json').version;
+import * as pkg from '../package.json';
 
-export const packageVersion = parse(version);
+export const packageVersion = parse(pkg.version);
