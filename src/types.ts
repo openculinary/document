@@ -61,7 +61,7 @@ export abstract class Entity {
         return line;
     };
 
-    abstract name(): string; // TODO:
+    abstract name(): string; // TODO: https://github.com/openculinary/document/issues/1
     abstract parseImpl(line: string): void;
     abstract emitImpl(): string;
     abstract upgrade(legacy: prev.types.Entity);
