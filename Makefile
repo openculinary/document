@@ -1,4 +1,6 @@
-.PHONY: tests
+.PHONY: default lint tests
+
+default: lint tests
 
 lint:
 	npx tslint 'src/**/*.ts'
