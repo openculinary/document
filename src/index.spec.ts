@@ -1,4 +1,4 @@
-import assert from 'assert';
+import { equal } from 'assert';
 import semver from 'semver';
 
 import curr from './index';
@@ -9,21 +9,21 @@ describe('generation', () => {
     const starred = new curr.types.Starred('test-recipe-id', curr.packageVersion);
     const text = starred.emit(curr.packageVersion);
 
-    assert.equal(text, 'test-recipe-id');
+    equal(text, 'test-recipe-id');
   });
 
   it('meal entity to line', () => {
     const meal = new curr.types.Meal('2x example-id @ 2020-09-17', curr.packageVersion);
     const text = meal.emit(curr.packageVersion);
 
-    assert.equal(text, '2x example-id @ 2020-09-17');
+    equal(text, '2x example-id @ 2020-09-17');
   });
 
   it('stock entity to line', () => {
     const stock = new curr.types.Stock('test-product-id', curr.packageVersion);
     const text = stock.emit(curr.packageVersion);
 
-    assert.equal('test-product-id', text);
+    equal('test-product-id', text);
   });
 
 });
@@ -35,7 +35,7 @@ describe('parsing', () => {
     const version = semver.parse('2020.9.23');
     const starred = new curr.types.Starred(text, version);
 
-    assert.equal(starred.recipe_id, 'test-recipe-id');
+    equal(starred.recipe_id, 'test-recipe-id');
   });
 
   it('meal description line', () => {
@@ -43,7 +43,7 @@ describe('parsing', () => {
     const version = semver.parse('2020.9.23');
     const meal = new curr.types.Meal(text, version);
 
-    assert.equal(meal.recipe_id, 'example-id');
+    equal(meal.recipe_id, 'example-id');
   });
 
   it('stock description line', () => {
@@ -51,7 +51,7 @@ describe('parsing', () => {
     const version = semver.parse('2020.9.23');
     const stock = new curr.types.Stock(text, version);
 
-    assert.equal(stock.product_id, 'test-product-id');
+    equal(stock.product_id, 'test-product-id');
   });
 
 });
