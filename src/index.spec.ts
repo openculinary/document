@@ -1,5 +1,5 @@
 import { equal } from 'assert';
-import semver from 'semver';
+import { parse as parseSemver } from 'semver';
 
 import curr from './index';
 
@@ -32,7 +32,7 @@ describe('parsing', () => {
 
   it('starred description line', () => {
     const text = 'test-recipe-id';
-    const version = semver.parse('2020.9.23');
+    const version = parseSemver('2020.9.23');
     const starred = new curr.types.Starred(text, version);
 
     equal(starred.recipe_id, 'test-recipe-id');
@@ -40,7 +40,7 @@ describe('parsing', () => {
 
   it('meal description line', () => {
     const text = '2x example-id @ 2020-09-17';
-    const version = semver.parse('2020.9.23');
+    const version = parseSemver('2020.9.23');
     const meal = new curr.types.Meal(text, version);
 
     equal(meal.recipe_id, 'example-id');
@@ -48,7 +48,7 @@ describe('parsing', () => {
 
   it('stock description line', () => {
     const text = 'test-product-id';
-    const version = semver.parse('2020.9.23');
+    const version = parseSemver('2020.9.23');
     const stock = new curr.types.Stock(text, version);
 
     equal(stock.product_id, 'test-product-id');
