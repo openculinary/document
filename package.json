@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@types/node": "^14.14.33",
-    "@types/semver": "^7.3.4"
+    "@types/semver": "^7.3.4",
+    "document-prev": "git+https://github.com/openculinary/document.git#d58cbdd3c273dd2b8742e2aa0e54ac64a6dc0d7c"
   }
 }
