@@ -1,5 +1,5 @@
-import * as prev from 'document-prev';
-import * as semver from 'semver';
+import prev from 'document-prev';
+import semver from 'semver';
 
 import { packageVersion } from './version';
 

@@ -1,7 +1,7 @@
-import * as assert from 'assert';
-import * as semver from 'semver';
+import assert from 'assert';
+import semver from 'semver';
 
-import * as curr from './index';
+import curr from './index';
 
 describe('generation', () => {
 

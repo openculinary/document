@@ -1,5 +1,5 @@
 import { parse } from 'semver';
 
-import * as pkg from '../package.json';
+import pkg from '../package.json';
 
 export const packageVersion = parse(pkg.version);
