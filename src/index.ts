@@ -1,4 +1,4 @@
 import { packageVersion } from './version';
-import types from './types';
+import * as types from './types';
 
 export { packageVersion, types };
