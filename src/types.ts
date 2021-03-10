@@ -1,7 +1,10 @@
-import prev from 'document-prev';
-import semver from 'semver';
+import {
+    packageVersion as previousVersion,
+    types as previousTypes
+} from 'document-prev';
+import { SemVer, lt as isLowerThan } from 'semver';
 
-import { packageVersion } from './version';
+import { packageVersion as currentVersion } from './version';
 
 export interface Quantity {
     magnitude: number,
@@ -50,20 +53,20 @@ export interface Recipe {
 
 export abstract class Entity {
 
-    constructor(line: string, source: semver.SemVer) {
-        if (semver.lt(source, packageVersion)) {
-            const prevEntity = new prev.types[this.name()](line, source);
+    constructor(line: string, source: SemVer) {
+        if (isLowerThan(source, currentVersion)) {
+            const prevEntity = new previousTypes[this.name()](line, source);
             const upgraded = this.upgrade(prevEntity);
-            line = upgraded.emit(packageVersion);
+            line = upgraded.emit(currentVersion);
         }
         this.parseImpl(line);
     };
 
-    emit(target: semver.SemVer): string {
+    emit(target: SemVer): string {
         const line = this.emitImpl();
-        if (semver.lt(target, packageVersion)) {
-            const prevEntity = new prev.types[this.name()]();
-            const prevImpl = prevEntity.parse(line, prev.packageVersion);
+        if (isLowerThan(target, currentVersion)) {
+            const prevEntity = new previousTypes[this.name()]();
+            const prevImpl = prevEntity.parse(line, previousVersion);
             return prevImpl.emit(target);
         }
         return line;
@@ -72,7 +75,7 @@ export abstract class Entity {
     abstract name(): string; // TODO: https://github.com/openculinary/document/issues/1
     abstract parseImpl(line: string): void;
     abstract emitImpl(): string;
-    abstract upgrade(legacy: prev.types.Entity);
+    abstract upgrade(legacy: previousTypes.Entity);
 }
 
 /* tslint:disable:variable-name */
@@ -87,9 +90,9 @@ export class Starred extends Entity {
     emitImpl(): string {
         return `${this.recipe_id}`;
     }
-    upgrade(legacy: prev.types.Starred): Starred {
-        const line = legacy.emit(prev.packageVersion);
-        return new Starred(line, packageVersion);
+    upgrade(legacy: previousTypes.Starred): Starred {
+        const line = legacy.emit(previousVersion);
+        return new Starred(line, currentVersion);
     }
 }
 
@@ -109,9 +112,9 @@ export class Meal extends Entity {
     emitImpl(): string {
         return `${this.servings || 1}x ${this.recipe_id} @ ${this.datetime}`;
     }
-    upgrade(legacy: prev.types.Meal): Meal {
-        const line = legacy.emit(prev.packageVersion);
-        return new Meal(line, packageVersion);
+    upgrade(legacy: previousTypes.Meal): Meal {
+        const line = legacy.emit(previousVersion);
+        return new Meal(line, currentVersion);
     }
 }
 
@@ -128,8 +131,8 @@ export class Stock extends Entity {
     emitImpl(): string {
         return `${this.product_id}`;
     }
-    upgrade(legacy: prev.types.Stock): Stock {
-        const line = legacy.emit(prev.packageVersion);
-        return new Stock(line, packageVersion);
+    upgrade(legacy: previousTypes.Stock): Stock {
+        const line = legacy.emit(previousVersion);
+        return new Stock(line, currentVersion);
     }
 }
