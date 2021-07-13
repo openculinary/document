@@ -92,7 +92,7 @@ export class Starred extends Entity {
     }
     upgrade(legacy: previousTypes.Starred): Starred {
         const line = legacy.emit(previousVersion);
-        return new (<any>this.constructor)(line, currentVersion);
+        return new (this.constructor as any)(line, currentVersion);
     }
 }
 
@@ -114,7 +114,7 @@ export class Meal extends Entity {
     }
     upgrade(legacy: previousTypes.Meal): Meal {
         const line = legacy.emit(previousVersion);
-        return new (<any>this.constructor)(line, currentVersion);
+        return new (this.constructor as any)(line, currentVersion);
     }
 }
 
@@ -133,6 +133,6 @@ export class Stock extends Entity {
     }
     upgrade(legacy: previousTypes.Stock): Stock {
         const line = legacy.emit(previousVersion);
-        return new (<any>this.constructor)(line, currentVersion);
+        return new (this.constructor as any)(line, currentVersion);
     }
 }
