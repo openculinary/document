@@ -1,4 +1,9 @@
 {
+    "ts-node": {
+        "moduleTypes": {
+            "node_modules/document-prev/**/*.ts": "cjs"
+        }
+    },
     "compilerOptions": {
         "resolveJsonModule": true,
         "target": "ES5"
